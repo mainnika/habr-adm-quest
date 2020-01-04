@@ -1,0 +1,8 @@
+httpApi:
+  addr: "0.0.0.0:8081"
+  base: "/answer"
+
+redis:
+  addr: "localhost:6379"
+  scoreKey: "pingpong-scores"
+  winnersKey: "pingpong-winners"
