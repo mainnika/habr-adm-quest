@@ -1,4 +1,4 @@
-module github.com/mainnika/habr-adm-quest/task3-backend
+module github.com/mainnika/habr-adm-quest
 
 go 1.13
 
@@ -10,6 +10,7 @@ require (
 	github.com/docker/go-connections v0.4.0 // indirect
 	github.com/docker/go-units v0.4.0 // indirect
 	github.com/go-redis/redis/v7 v7.0.0-beta.5
+	github.com/google/uuid v1.1.1
 	github.com/jackwhelpton/fasthttp-routing/v2 v2.0.0
 	github.com/opencontainers/go-digest v1.0.0-rc1 // indirect
 	github.com/sirupsen/logrus v1.4.2
