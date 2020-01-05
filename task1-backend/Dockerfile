@@ -20,7 +20,7 @@ RUN mkdir -p /app
 WORKDIR /app
 
 COPY --from=builder /app/task1 .
-COPY --from=builder /app/task1-backend/config .
+COPY --from=builder /app/task1-backend/config config
 
 EXPOSE 8081
 
