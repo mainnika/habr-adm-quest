@@ -117,9 +117,9 @@ func (a *Api) checkAnswer(ctx *routing.Context) (err error) {
 
 	ctx.Response.Header.Set("Content-Type", "application/json")
 	_, err = ctx.WriteString(fmt.Sprintf(`
-['переход на следующий уровень ищи в альтер имени безопасности узла',
-'используй ключ чтобы открыть следующий уровень',
-'%s']
+["переход на следующий уровень ищи в альтернативном имени безопасного узла",
+"используй ключ чтобы открыть следующий уровень",
+"%s"]
 `, jwt))
 	if err != nil {
 		return routing.NewHTTPError(http.StatusInternalServerError, err.Error())
