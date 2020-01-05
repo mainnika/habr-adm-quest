@@ -62,7 +62,7 @@ import '../css/util.css';
 
     var rocking = setInterval((txt.text("хм 🚀"), function () { txt.text(txt.text() + "🚀") }), 50);
 
-    fetch('//127.0.0.1:8081/answer/check', {
+    fetch('/answer/check', {
       method: 'POST',
       body: JSON.stringify({ answer: answer.val().trim(), name: name.val().trim() }),
     })

@@ -1,0 +1,27 @@
+FROM alpine as builder
+
+ENV GOPATH /root/go
+ENV PATH ${GOPATH}/bin:${PATH}
+
+RUN mkdir -p /app
+WORKDIR /app
+
+RUN apk add --no-cache go git curl
+
+COPY . .
+RUN go build -o task1 github.com/mainnika/habr-adm-quest/task1-backend
+
+FROM alpine
+
+ENV GOPATH /root/go
+ENV PATH ${GOPATH}/bin:${PATH}
+
+RUN mkdir -p /app
+WORKDIR /app
+
+COPY --from=builder task1 .
+COPY --from=builder task1-backend/config .
+
+EXPOSE 8081
+
+CMD ["/app/task1"]
