@@ -1,0 +1,24 @@
+{
+  "name": "adm-quest",
+  "version": "1.0.0",
+  "description": "adm-quest",
+  "scripts": {
+    "clean": "rimraf build dist .cache",
+    "build-task1": "parcel build -d build/task1 task1/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mainnika/habr-adm-quest.git"
+  },
+  "author": "mainnika",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mainnika/habr-adm-quest/issues"
+  },
+  "homepage": "https://github.com/mainnika/habr-adm-quest#readme",
+  "dependencies": {
+    "parcel-bundler": "^1.12.4",
+    "parcel-plugin-obfuscate": "^1.0.0",
+    "rimraf": "^3.0.0"
+  }
+}

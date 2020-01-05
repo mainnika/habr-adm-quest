@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>по следам анонимного деда мороза</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+  <link href="//fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <div id="q">
+    <div class="container-contact100">
+      <div class="wrap-contact100">
+        <form id="q-form" class="contact100-form" validate-form>
+          <span class="contact100-form-title">
+            иди по следу анонимного деда мороза и найди свой последний подарок! всего здесь тебя ждут три уровня. и да,
+            будь внимателен с именем, удачи!
+          </span>
+
+          <div class="wrap-input100 validate-input" data-validate="Нужно имя">
+            <input class="input100" type="text" name="name" placeholder="твое имя">
+          </div>
+          <div class="wrap-input100 validate-input" data-validate="Нужен ключ">
+            <input class="input100" type="text" name="answer" placeholder="ключ посылки RM...">
+          </div>
+
+          <div class="container-contact100-form-btn">
+            <div class="wrap-contact100-form-btn">
+              <div class="contact100-form-bgbtn"></div>
+              <button class="contact100-form-btn" onclick="return tryAnswer(this)">
+                <span>
+                  проверим
+                </span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="a" class="hidden">
+    <div class="container-contact100">
+      <div class="wrap-contact150">
+      </div>
+    </div>
+  </div>
+
+  <script src="./js/main.js"></script>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="//www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-23581568-13');
+  </script>
+
+</body>
+
+</html>
