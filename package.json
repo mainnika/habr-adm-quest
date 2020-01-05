@@ -4,7 +4,8 @@
   "description": "adm-quest",
   "scripts": {
     "clean": "rimraf build dist .cache",
-    "build-task1": "parcel build -d build/task1 task1/index.html"
+    "build-task1": "node make task1",
+    "build-task2": "node make task2"
   },
   "repository": {
     "type": "git",
@@ -17,8 +18,11 @@
   },
   "homepage": "https://github.com/mainnika/habr-adm-quest#readme",
   "dependencies": {
+    "bootstrap": "^4.4.1",
+    "javascript-obfuscator": "^0.20.4",
+    "jquery": "^3.4.1",
     "parcel-bundler": "^1.12.4",
-    "parcel-plugin-obfuscate": "^1.0.0",
+    "popper.js": "^1.16.0",
     "rimraf": "^3.0.0"
   }
 }

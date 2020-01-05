@@ -33,3 +33,5 @@ task2-backend/task2-backend
 task3-backend/task3-backend
 
 node_modules/
+
+build/
