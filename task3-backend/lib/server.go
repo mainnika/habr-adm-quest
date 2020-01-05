@@ -103,7 +103,7 @@ func (s *Server) HandleClient(conn net.Conn) {
 
 	log.Debugf("connected with id %s", claims.Id)
 
-	conn.Write([]byte(`loading\n`))
+	conn.Write([]byte("loading\n"))
 
 	jailId, err := s.createJail(now, claims)
 	if err != nil {
@@ -125,7 +125,7 @@ func (s *Server) HandleClient(conn net.Conn) {
 	}
 
 	greetings := fmt.Sprintf("welcome %s! I have a letter for you, just read it!", claims.Subject)
-	conn.Write([]byte(fmt.Sprintf(`echo %s`, greetings)))
+	conn.Write([]byte(fmt.Sprintf("echo %s\n", greetings)))
 	cmd := fmt.Sprintf(`echo %s 2>&1 | tee msg /dev/console`, greetings)
 
 	err = s.execJail(jailId, []string{"sh", "-c", cmd})
