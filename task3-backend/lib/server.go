@@ -6,7 +6,10 @@ import (
 	"crypto/ecdsa"
 	"errors"
 	"fmt"
+	"io"
 	"net"
+	"os"
+	"path"
 	"sync/atomic"
 	"time"
 
@@ -17,7 +20,9 @@ import (
 	"github.com/docker/docker/api/types/network"
 	"github.com/docker/docker/client"
 	"github.com/go-redis/redis/v7"
+	"github.com/google/uuid"
 	log "github.com/sirupsen/logrus"
+	"golang.org/x/sys/unix"
 )
 
 type Server struct {
@@ -174,6 +179,11 @@ func (s *Server) readKey(conn net.Conn) (key string, err error) {
 
 func (s *Server) createJail(now int64, claims *jwtgo.StandardClaims) (id string, err error) {
 
+	letterPath, letterFullPath, err := createLetterProtected(s.LetterPath)
+	if err != nil {
+		return
+	}
+
 	name := fmt.Sprintf("%d-%s", now, claims.Id)
 	cfg := &container.Config{
 		NetworkDisabled: true,
@@ -187,10 +197,9 @@ func (s *Server) createJail(now int64, claims *jwtgo.StandardClaims) (id string,
 		Cmd:       []string{"/bin/sh"},
 	}
 	letter := mount.Mount{
-		Type:     mount.TypeBind,
-		Source:   s.LetterPath,
-		Target:   "/letter",
-		ReadOnly: true,
+		Type:   mount.TypeBind,
+		Source: letterFullPath,
+		Target: fmt.Sprintf("/%s", letterPath),
 	}
 	hcfg := &container.HostConfig{
 		NetworkMode: "none",
@@ -304,6 +313,34 @@ func createProxyChan(conn net.Conn, closed *uint32) (out chan []byte) {
 			}
 		}
 	}()
+
+	return
+}
+
+func createLetterProtected(sourcePath string) (letterPath string, letterFullPath string, err error) {
+
+	source, err := os.Open(sourcePath)
+	if err != nil {
+		return
+	}
+	defer source.Close()
+
+	tmpPath := os.TempDir()
+	letterPath = fmt.Sprintf("%s.letter", uuid.New().String())
+	letterFullPath = path.Join(tmpPath, letterPath)
+
+	letter, err := os.OpenFile(letterFullPath, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0000)
+	if err != nil {
+		return
+	}
+	defer letter.Close()
+
+	_, err = io.Copy(letter, source)
+	if err != nil {
+		return
+	}
+
+	_ = unix.Sync()
 
 	return
 }
