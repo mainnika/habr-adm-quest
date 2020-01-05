@@ -1,0 +1,19 @@
+version: '3'
+services:
+  backend2:
+    build:
+      dockerfile: ./task3-backend/Dockerfile
+      context: ../..
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "./postbox:/app/postbox"
+      - "../../keys/letter:/app/letter"
+    restart: unless-stopped
+    networks:
+      net:
+        ipv4_address: 10.103.204.3
+
+networks:
+  net:
+    external:
+      name: tasks-net
