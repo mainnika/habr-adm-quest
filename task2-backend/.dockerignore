@@ -1,7 +1,0 @@
-*
-!lib
-!config
-!go.mod
-!go.sum
-!keys.go
-!main.go
