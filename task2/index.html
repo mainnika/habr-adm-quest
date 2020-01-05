@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>по следам анонимного деда мороза</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+  <link href="//fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <div id="q">
+    <div class="container-contact100">
+      <div class="wrap-contact100">
+        <form id="q-form" class="contact100-form" validate-form>
+          <span class="contact100-form-title">
+            предлагаю поиграть, простая игра пинг-понг, вводи ключ и понеслась! первому месту в рейтинге открывается
+            скрытое знание.
+          </span>
+
+          <div class="wrap-input100 validate-input" data-validate="Нужен ключ">
+            <input class="input100" type="text" name="key" required>
+          </div>
+
+          <div class="container-contact100-form-btn">
+            <div class="wrap-contact100-form-btn">
+              <div class="contact100-form-bgbtn"></div>
+              <button class="contact100-form-btn" onclick="return playGame(this)">
+                <span>
+                  поехали
+                </span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="a" class="hidden">
+    <div class="container-contact100">
+      <div id="game" class="wrap-contact100">
+        <canvas width="640" height="480" id="canvas"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <script src="./js/main.js"></script>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="//www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-23581568-13');
+  </script>
+
+</body>
+
+</html>
