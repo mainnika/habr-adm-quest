@@ -8,6 +8,10 @@ WORKDIR /app
 
 RUN apk add --no-cache go git curl gcc g++ make
 
+COPY go.sum .
+COPY go.mod .
+RUN go mod download
+
 COPY . .
 RUN go build -o task3 github.com/mainnika/habr-adm-quest/task3-backend
 
