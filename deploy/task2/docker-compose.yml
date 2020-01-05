@@ -1,0 +1,23 @@
+version: '3'
+services:
+  static:
+    image: nginx
+    volumes:
+      - "./default.conf:/etc/nginx/conf.d/default.conf"
+      - "../../build/task2:/usr/share/nginx/html"
+    restart: unless-stopped
+    networks:
+      net:
+        ipv4_address: 10.103.204.2
+  backend2:
+    build:
+      dockerfile: ./task2-backend/Dockerfile
+      context: ../..
+    restart: unless-stopped
+    networks:
+      net: {}
+
+networks:
+  net:
+    external:
+      name: tasks-net
