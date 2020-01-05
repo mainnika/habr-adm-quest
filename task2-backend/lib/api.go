@@ -82,7 +82,7 @@ func (a *Api) checkScore(ctx *routing.Context) (err error) {
 
 	type Score struct {
 		Key   string `json:"key"`
-		Score int    `json:"score"`
+		Score int64  `json:"score"`
 	}
 
 	type Response struct {
@@ -133,7 +133,7 @@ func (a *Api) checkScore(ctx *routing.Context) (err error) {
 
 	resp := &Response{Top: zz}
 
-	if int(zz[0].Score) > score.Score {
+	if int64(zz[0].Score) > score.Score {
 		resp.Msg = []string{
 			`ух, хорошая игра, но нужно стараться еще!`,
 		}
