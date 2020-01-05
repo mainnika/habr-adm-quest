@@ -11,8 +11,8 @@ services:
         ipv4_address: 10.103.204.1
   backend1:
     build:
-      dockerfile: ./Dockerfile.task1
-      context: ../../task1-backend
+      dockerfile: ./task1-backend/Dockerfile
+      context: ../..
     restart: unless-stopped
     networks:
       net: {}
