@@ -16,4 +16,5 @@ require (
 	github.com/sirupsen/logrus v1.4.2
 	github.com/spf13/viper v1.6.1
 	github.com/valyala/fasthttp v1.7.1
+	golang.org/x/sys v0.0.0-20191010194322-b09406accb47
 )

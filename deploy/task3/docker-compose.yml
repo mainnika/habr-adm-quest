@@ -1,6 +1,6 @@
 version: '3'
 services:
-  backend2:
+  backend3:
     build:
       dockerfile: ./task3-backend/Dockerfile
       context: ../..

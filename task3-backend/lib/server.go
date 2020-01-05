@@ -305,7 +305,7 @@ func (s *Server) createLetter() (letterPath string, localFullPath string, err er
 		return
 	}
 
-	_ = unix.Sync()
+	unix.Sync()
 
 	return
 }
