@@ -109,13 +109,16 @@ func main() {
 	}
 
 	taskserv := &lib.Server{
-		Alg:          alg,
-		Pub:          pubKey,
-		Priv:         privKey,
-		Docker:       docklient,
-		WinnersKey:   Config.Redis.WinnersKey,
-		Redis:        rediclient,
-		ClientsLimit: uint32(Config.Task.Clients),
+		Alg:               alg,
+		Pub:               pubKey,
+		Priv:              privKey,
+		Docker:            docklient,
+		WinnersKey:        Config.Redis.WinnersKey,
+		Redis:             rediclient,
+		ClientsLimit:      uint32(Config.Task.Clients),
+		LetterPath:        Config.Task.LetterPath,
+		LocalPostboxPath:  Config.Task.LocalPostboxPath,
+		RemotePostboxPath: Config.Task.RemotePostboxPath,
 	}
 
 	go httpStart(apiserv)

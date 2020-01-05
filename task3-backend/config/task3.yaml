@@ -5,6 +5,9 @@ httpApi:
 task:
   addr: "0.0.0.0:31337"
   clients: 4
+  letterPath: "./letter"
+  localPostboxPath: "./postbox"
+  remotePostboxPath: "/root/habr-adm-quest/deploy/task3/postbox"
 
 redis:
   addr: "localhost:6379"

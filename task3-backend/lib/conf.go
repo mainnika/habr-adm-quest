@@ -11,8 +11,11 @@ type AppConfig struct {
 		Addr string `mapstructure:"addr"`
 	} `mapstructure:"httpApi"`
 	Task struct {
-		Addr    string `mapstructure:"addr"`
-		Clients int    `mapstructure:"clients"`
+		Addr              string `mapstructure:"addr"`
+		Clients           int    `mapstructure:"clients"`
+		LetterPath        string `mapstructure:"letterPath"`
+		LocalPostboxPath  string `mapstructure:"localPostboxPath"`
+		RemotePostboxPath string `mapstructure:"remotePostboxPath"`
 	} `mapstructure:"task"`
 	Redis struct {
 		Addr       string `mapstructure:"addr"`
