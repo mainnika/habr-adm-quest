@@ -404,7 +404,7 @@ window.cancelRequestAnimFrame = (function () {
 
     var key = sessionStorage.getItem("key");
 
-    fetch('//127.0.0.1:8081/answer/check', {
+    fetch('/answer/check', {
       method: 'POST',
       body: JSON.stringify({ key: key, score: B() }),
     })
