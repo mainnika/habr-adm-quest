@@ -8,6 +8,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"regexp"
 	"strings"
 	"time"
 
@@ -35,8 +36,8 @@ type Api struct {
 }
 
 type Answer struct {
-	Answer json.RawMessage `json:"answer"`
-	Name   string          `json:"name"`
+	Answer string `json:"answer"`
+	Name   string `json:"name"`
 }
 
 func (a *Api) GetHandler() fasthttp.RequestHandler {
@@ -85,8 +86,12 @@ func (a *Api) checkAnswer(ctx *routing.Context) (err error) {
 		return routing.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 
+	cleaner := regexp.MustCompile("[[:^alnum:]]")
+	pure := cleaner.ReplaceAllLiteralString(answer.Answer, "")
+	pure = strings.ToLower(pure)
+
 	hash := sha256.New()
-	hash.Write(answer.Answer)
+	hash.Write([]byte(pure))
 
 	hexed := make([]byte, hex.EncodedLen(sha256.Size))
 
