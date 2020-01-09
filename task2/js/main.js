@@ -412,7 +412,7 @@ window.cancelRequestAnimFrame = (function () {
       .catch(function () { })
       .then(function (approval) {
         if (!approval) {
-          ctx.fillText("Не удалось сохранить с этим ключем", W / 2, H / 2 + 65);
+          ctx.fillText("Не удалось сохранить с этим ключом", W / 2, H / 2 + 65);
           return
         }
 
