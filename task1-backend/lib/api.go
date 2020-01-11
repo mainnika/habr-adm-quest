@@ -7,6 +7,7 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"fmt"
+	"math/rand"
 	"net/http"
 	"regexp"
 	"strings"
@@ -99,6 +100,8 @@ func (a *Api) checkAnswer(ctx *routing.Context) (err error) {
 
 	log.Debugf("req answer, %v", answer)
 	log.Debugf("req hashed, %s", hexed)
+
+	time.Sleep(time.Second + (time.Millisecond * time.Duration(rand.Intn(500))))
 
 	valid := subtle.ConstantTimeCompare(a.Answer, hexed)
 	if valid == 0 {
