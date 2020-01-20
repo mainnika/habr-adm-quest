@@ -165,19 +165,17 @@ func (s *Server) readKey(conn net.Conn) (key string, err error) {
 
 	scanner.Buffer(buf, 0)
 
-	for {
-		err = scanner.Err()
-		if err != nil {
-			return
-		}
+	ok := scanner.Scan()
+	err = scanner.Err()
 
-		if !scanner.Scan() {
-			continue
-		}
-
-		key = scanner.Text()
-		break
+	if err != nil {
+		log.Debugf("cannot scan, %v", err)
 	}
+	if !ok {
+		return
+	}
+
+	key = scanner.Text()
 
 	return
 }
